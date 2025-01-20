@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
             PositionSeeder::class,
             PositionSalarySeeder::class,
             PositionAllowanceSeeder::class,
-            EmployeeSeeder::class
+            EmployeeSeeder::class.
+            AttendanceSeeder::class
         ]);
     }
 }
