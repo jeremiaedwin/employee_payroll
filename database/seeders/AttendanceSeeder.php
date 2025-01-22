@@ -47,10 +47,6 @@ class AttendanceSeeder extends Seeder
                 ]);
             }
 
-            // echo "Date = " . $currentDate ."\n";
-            // echo "Present = " . $presentTime ."\n";
-            // echo "Leave = " . $leaveTime ."\n";
-            // echo "Working Hours = " . $workingHours ."\n\n";
 
             
         }

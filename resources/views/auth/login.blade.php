@@ -41,12 +41,12 @@
             </div>
             <div class="row">
               <div class="col-8">
-                <div class="icheck-primary">
-                  <input type="checkbox" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}>
+                <!-- <div class="icheck-primary">
+                  <input type="hiden" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}>
                   <label for="remember">
                     {{ __('Remember Me') }}
                   </label>
-                </div>
+                </div> -->
               </div>
               <!-- /.col -->
               <div class="col-4">
@@ -56,21 +56,7 @@
             </div>
           </form>
 
-          <div class="social-auth-links text-center mb-3">
-            <p>- OR -</p>
-            <a href="#" class="btn btn-block btn-primary">
-              <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-            </a>
-            <a href="#" class="btn btn-block btn-danger">
-              <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-            </a>
-          </div>
-          <!-- /.social-auth-links -->
-          @if (Route::has('password.request'))
-          <p class="mb-1">
-            <a href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
-          </p>
-          @endif
+
           @if (Route::has('register'))
           <p class="mb-0">
             <a href="{{ route('register') }}" class="text-center">{{ __('Register') }}</a>
