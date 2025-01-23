@@ -62,7 +62,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form method="post" action="/pekerjaan">
+        <form method="post" action="/department">
           @csrf
           <div class="modal-body">
             <div class="form-group">
@@ -89,7 +89,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form method="post" action="/pekerjaan/update">
+        <form method="post" action="/department/update">
           @csrf
           <div class="modal-body">
             <div class="form-group">
