@@ -25,3 +25,11 @@ Route::post('/department', [App\Http\Controllers\Master\DepartmentController::cl
 Route::post('/department/update', [App\Http\Controllers\Master\DepartmentController::class, 'update'])->name('department.update');
 Route::get('/department/{id}', [App\Http\Controllers\Master\DepartmentController::class, 'getDataById']);
 Route::delete('/department/{id}', [App\Http\Controllers\Master\DepartmentController::class, 'destroy'])->name('department.destroy');
+
+
+Route::get('position', [App\Http\Controllers\Master\PositionController::class, 'index'])->name('position');
+Route::get('positionData', [App\Http\Controllers\Master\PositionController::class, 'getData'])->name('position.data');
+Route::post('position', [App\Http\Controllers\Master\PositionController::class, 'store'])->name('position.store');
+Route::post('position/update', [App\Http\Controllers\Master\PositionController::class, 'update'])->name('position.update');
+Route::get('position/{id}', [App\Http\Controllers\Master\PositionController::class, 'getDataById']);
+Route::delete('position/{id}', [App\Http\Controllers\Master\PositionController::class, 'destroy'])->name('position.destroy');
