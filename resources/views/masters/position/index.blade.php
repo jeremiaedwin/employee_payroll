@@ -71,6 +71,12 @@
               <input type="text" class="form-control" name="name">
             </div>
           </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Department</label>
+              <select class="select2-ajax form-control " style="width: 100%;" name="department_id" id="department_id"></select>
+            </div>
+          </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">Save</button>
@@ -111,7 +117,6 @@
 
 @endsection
 @push('custom-scripts')
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
   <script type="text/javascript">
     
@@ -121,6 +126,33 @@
         $('#btn-edit').attr("disabled", true);
         $('#btn-delete').attr("disabled", true);
     }
+
+    $(document).ready(function() {
+      $('#department_id').select2({
+        placeholder: "Select a department",
+        ajax: {
+            url: '{{ route("department.search") }}', // Replace with your route
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    q: params.term // Search query
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: data.map(department => ({
+                        id: department.id,
+                        text: department.name
+                    }))
+                };
+            },
+            cache: true
+          }
+      });
+    });
+
+    
 
     const table = $('#data-table').DataTable({
       processing: true,
@@ -230,6 +262,10 @@
                 });
             }
         });
+
+        
     });
+
+    
   </script>
 @endpush

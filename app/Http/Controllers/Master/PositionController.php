@@ -45,4 +45,36 @@ class PositionController extends Controller
                 ->make(true);
         }
     }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate(
+            [
+                'name' => 'required|string|max:255',
+                "department_id" => 'required'
+            ],
+        );
+
+        $isExist = Position::where('name', '=', $request->name)->where("department_id", "=", $request->department_id)->first();
+
+        if($isExist) {
+            Alert::error('Gagal!', 'The position has been assigned to this department');
+            return redirect()->back();
+        }
+
+        $position = new Position;
+        $position->name = $request->name;
+        $position->department_id = $request->department_id;
+        if($position->save()){
+            Alert::success('Success!', 'Position Created Successfully');
+        } else {
+            Alert::error('Gagal!', 'Position Fail Created');
+        }
+        
+        return redirect()->back();
+    }
+
 }

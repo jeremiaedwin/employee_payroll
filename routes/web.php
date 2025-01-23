@@ -21,6 +21,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/department', [App\Http\Controllers\Master\DepartmentController::class, 'index'])->name('department');
 Route::get('/departmentData', [App\Http\Controllers\Master\DepartmentController::class, 'getData'])->name('department.data');
+Route::get('/department/search', [App\Http\Controllers\Master\DepartmentController::class, 'search'])->name('department.search');
 Route::post('/department', [App\Http\Controllers\Master\DepartmentController::class, 'store'])->name('department.store');
 Route::post('/department/update', [App\Http\Controllers\Master\DepartmentController::class, 'update'])->name('department.update');
 Route::get('/department/{id}', [App\Http\Controllers\Master\DepartmentController::class, 'getDataById']);

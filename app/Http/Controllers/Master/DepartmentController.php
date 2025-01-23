@@ -119,5 +119,13 @@ class DepartmentController extends Controller
 
         return response()->json(['message' => 'Department Deleted Successfully'], 200);
     }
-       
+    
+    public function search(Request $request)
+    {
+        $query = $request->get('q', '');
+        $departments = Department::where('name', 'LIKE', "%{$query}%")->get();
+
+        return response()->json($departments);
+    }
+
 }
