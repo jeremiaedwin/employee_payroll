@@ -15,6 +15,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
+  <!-- Datatable -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+  <!-- Sweet alert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -79,7 +83,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/sektor" class="nav-link">
+                <a href="/department" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Department</p>
                 </a>
@@ -152,6 +156,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </aside>
 
   @yield('content')
+  @if ($errors->any())
+  <script>
+      Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          html: `
+                  @foreach ($errors->all() as $error)
+                      <p>{{ $error }}</p>
+                  @endforeach
+          `,
+      });
+  </script>
+  @endif
+  @include('sweetalert::alert')
 
 <!-- REQUIRED SCRIPTS -->
 
@@ -161,5 +179,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
+@stack('custom-scripts')
 </body>
 </html>
